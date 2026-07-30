@@ -107,3 +107,70 @@ utilizados para análise.
 
 Por favor, valide as informações antes
 de prosseguirmos.
+
+Aplicação Funcional
+Estrutura do Projeto
+finadvisor/
+│
+├── app.py
+├── data/
+│   ├── transacoes.csv
+│   ├── historico_atendimento.csv
+│   ├── perfil_investidor.json
+│   └── produtos_financeiros.json
+│
+├── prompts/
+│   └── system_prompt.txt
+│
+├── services/
+│   ├── rag.py
+│   ├── analytics.py
+│   └── recommender.py
+│
+└── requirements.txt
+
+Streamlit + OpenAI
+app.py
+import streamlit as st
+import pandas as pd
+import json
+from openai import OpenAI
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+transacoes = pd.read_csv("data/transacoes.csv")
+
+with open("data/perfil_investidor.json") as f:
+    perfil = json.load(f)
+
+st.title("FinAdvisor AI")
+
+pergunta = st.text_input("Faça sua pergunta")
+
+if pergunta:
+
+    contexto = f"""
+    Perfil:
+    {perfil}
+
+    Últimas transações:
+    {transacoes.tail(10).to_string()}
+    """
+
+    resposta = client.responses.create(
+        model="gpt-4o",
+        input=f"{contexto}\n\nPergunta:{pergunta}"
+    )
+
+    st.write(resposta.output_text)
+
+Dependências
+streamlit
+openai
+pandas
+numpy
+
+Execução
+pip install -r requirements.txt
+
+streamlit run app.py
