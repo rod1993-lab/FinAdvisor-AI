@@ -1,0 +1,167 @@
+Problema 
+Muitos clientes:
+
+Não possuem controle financeiro eficiente
+Gastam acima do planejado
+Não aproveitam oportunidades de investimento
+Não possuem acompanhamento contínuo de suas metas
+Recebem recomendações genéricas
+
+Solução
+O FinAdvisor AI monitora continuamente:
+
+Histórico financeiro
+Perfil do investidor
+Objetivos financeiros
+Comportamento de consumo
+
+E realiza:
+
+Alertas preventivos
+Planejamento financeiro
+Recomendações de investimentos
+Simulações de metas
+Sugestões personalizadas
+
+Persona e Tom de Voz
+Persona
+Consultor Financeiro Digital Inteligente
+Características:
+
+Proativo
+Consultivo
+Didático
+Transparente
+Confiável
+Orientado por dados
+
+
+Tom de Comunicação
+Amigável
+
+Vamos analisar juntos sua situação financeira.
+
+Educativo
+
+Posso explicar os riscos e benefícios dessa alternativa.
+
+Transparente
+
+Essa recomendação foi baseada no seu histórico dos últimos 12 meses.
+
+Seguro
+
+Não possuo dados suficientes para sugerir esse investimento com segurança.
+
+Arquitetura da Solução
+
+                    CLIENTE
+                        │
+                        ▼
+          ┌─────────────────────────┐
+          │ Interface Streamlit     │
+          └─────────────┬───────────┘
+                        │
+                        ▼
+          ┌─────────────────────────┐
+          │      LLM (GPT)          │
+          └─────────────┬───────────┘
+                        │
+       ┌────────────────┼─────────────────┐
+       ▼                ▼                 ▼
+
+transacoes.csv   historico.csv   perfil.json
+
+       ▼                ▼                 ▼
+
+          ┌─────────────────────────┐
+          │ Camada Contextual RAG   │
+          └─────────────┬───────────┘
+                        │
+                        ▼
+          ┌─────────────────────────┐
+          │ Motor de Recomendação   │
+          └─────────────┬───────────┘
+                        │
+                        ▼
+                 Resposta Final
+
+Fluxo de Dados
+Entrada
+Arquivos fornecidos:
+transacoes.csv
+Data
+Categoria
+Valor
+Tipo
+
+historico_atendimento.csv
+Solicitações anteriores
+Dúvidas frequentes
+Reclamações
+
+perfil_investidor.json
+{
+  "perfil": "Moderado",
+  "idade": 35,
+  "objetivo": "Compra de imóvel"
+}
+
+produtos_financeiros.json
+{
+  "produto": "Tesouro IPCA",
+  "risco": "Baixo"
+}
+
+Processamento
+
+Carrega arquivos
+Analisa perfil
+Analisa movimentações
+Recupera informações relevantes (RAG)
+Gera recomendações
+Valida resposta
+Entrega resultado
+
+Segurança e Anti-Alucinação
+Estratégias
+RAG
+O agente responde apenas com base em:
+
+Perfil do cliente
+Dados financeiros carregados
+Catálogo autorizado de produtos
+
+Bloqueio de Invenções
+Regra:
+Se a informação não estiver na base,
+não responder com suposições.
+
+Exemplo:
+✅ Correto
+
+Não encontrei informações suficientes para recomendar um CDB específico.
+
+❌ Incorreto
+
+Recomendo o CDB XYZ com rendimento de 15%.
+
+Score de Confiança
+Toda resposta recebe um indicador:
+Nível de confiança: 94%
+
+Baseado em:
+✓ Perfil Moderado
+✓ Histórico Financeiro
+✓ Produtos Disponíveis
+
+Escalonamento Humano
+Casos críticos:
+
+Indício de fraude
+Operações acima de limite
+Ausência de contexto suficiente
+
+Resposta:
+
+Recomendo falar com um especialista financeiro para essa decisão.
