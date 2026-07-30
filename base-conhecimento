@@ -1,0 +1,32 @@
+Arquivos Utilizados
+transacoes.csv
+Utilizado para:
+
+Identificar padrões
+Detectar excesso de gastos
+Calcular saldo médio
+Encontrar oportunidades
+
+
+historico_atendimento.csv
+Utilizado para:
+
+Conhecer preferências
+Recuperar dúvidas recorrentes
+Personalizar respostas
+
+
+perfil_investidor.json
+Utilizado para:
+
+Perfil de risco
+Objetivos
+Faixa etária
+
+
+produtos_financeiros.json
+Utilizado para:
+
+Recomendar investimentos
+Verificar adequação
+Comparar produtos
